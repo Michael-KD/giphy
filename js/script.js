@@ -3,6 +3,7 @@ let userSearch;
 let userapiURL;
 let randomNumber;
 let gifLink;
+let gifsNum;
 
 $(".search-button").click(function(){
   userSearch = $(".search-term").val();
@@ -15,9 +16,11 @@ $(".search-button").click(function(){
           return response.json();
        })
       .then(function(data) {
-          randomNumber = Math.floor(Math.random() * 50);
+          console.log(data.meta.msg);
+          gifsNum = data.data.length;
+          randomNumber = Math.floor(Math.random() * gifsNum);
           gifLink = data.data[randomNumber].images.original.url;
-          // console.log(gifLink);
+          console.log(gifLink);
           $(".main").html(`<img src=${gifLink}>`);
       });
   
