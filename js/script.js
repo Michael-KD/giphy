@@ -7,7 +7,7 @@ let gifLink;
 $(".search-button").click(function(){
   userSearch = $(".search-term").val();
   userapiURL = "https://api.giphy.com/v1/gifs/search?q=" + userSearch + "&rating=pg&api_key=dc6zaTOxFJmzC";
-  console.log(userapiURL);
+  // console.log(userapiURL);
   
   
   fetch(`${userapiURL}`)
@@ -16,8 +16,8 @@ $(".search-button").click(function(){
        })
       .then(function(data) {
           randomNumber = Math.floor(Math.random() * 50);
-          gifLink = data.data[randomNumber].url;
-          console.log(gifLink);
+          gifLink = data.data[randomNumber].images.original.url;
+          // console.log(gifLink);
           $(".main").html(`<img src=${gifLink}>`);
       });
   
