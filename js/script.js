@@ -1,4 +1,4 @@
-let apiURL = "https://api.giphy.com/v1/gifs/search?q=puppy&rating=pg&api_key=dc6zaTOxFJmzC"
+let apiURL = "https://api.giphy.com/v1/gifs/search?q=puppy&rating=pg&api_key=dc6zaTOxFJmzC";
 let userSearch;
 let userapiURL;
 let randomNumber;
@@ -21,7 +21,7 @@ $(".search-button").click(function(){
           randomNumber = Math.floor(Math.random() * gifsNum);
           gifLink = data.data[randomNumber].images.original.url;
           console.log(gifLink);
-          $(".main").html(`<img src=${gifLink}>`);
+          $(".main").prepend(`<img src=${gifLink}>`);
       });
   
 });
