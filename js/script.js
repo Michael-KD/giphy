@@ -4,6 +4,7 @@ let userapiURL;
 let randomNumber;
 let gifLink;
 let gifsNum;
+let gifFavorite = [];
 
 $(".search-button").click(function(){
   userSearch = $(".search-term").val();
@@ -20,9 +21,17 @@ $(".search-button").click(function(){
           gifsNum = data.data.length;
           randomNumber = Math.floor(Math.random() * gifsNum);
           gifLink = data.data[randomNumber].images.original.url;
-          console.log(gifLink);
-          $(".main").prepend(`<img src=${gifLink}>`);
+          console.log(randomNumber);
+          $(".main").html(`<img src=${gifLink}>`);
       });
   
 });
+
+$(".favorite").click(function(){
+  let gifAttr = $(".main img").attr("src");
+  gifFavorite.push(gifAttr);
+  console.log(gifFavorite);
+  $(".favorites").append(`<li><a href=${gifAttr}>${gifAttr}</a></li>`);
+});
+
 
